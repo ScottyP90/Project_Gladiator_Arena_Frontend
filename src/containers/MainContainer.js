@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from '../NavBar.js'
-// import GladiatorList from './components/gladiator/gladiatorList';
-// import MonsterList from './components/monster/monsterList';
-// import WeaponList from './components/weapon/weaponList';
-// import MatchList from './component/match/matchList';
+import GladiatorList from '../components/gladiator/gladiatorList';
+// import MonsterList from '../components/monster/monsterList';
+// import WeaponList from '../components/weapon/weaponList';
+// import MatchList from '../component/match/matchList';
 import Request from '../helpers/request';
 
 class MainContainer extends Component{
@@ -21,7 +21,6 @@ class MainContainer extends Component{
 
   componentDidMount(){
     let request = new Request()
-
     request.get('/api/gladiators').then((data) => {
       this.setState({gladiators: data._embedded.gladiators})
     }).then(() => {
@@ -45,6 +44,9 @@ class MainContainer extends Component{
         <Router>
           <React.Fragment>
             <NavBar/>
+            <Switch>
+              <Route exact path="/gladiator" render={(props) => <GladiatorList gladiator={this.state.gladiators}/>}/>
+            </Switch>
           </React.Fragment>
         </Router>
       </div>
