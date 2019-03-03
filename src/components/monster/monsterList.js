@@ -4,7 +4,7 @@ import Monster from './monster.js'
 const MonsterList = (props) => {
   const monsters = props.monsters.map((monster) => {
     return(<li key={monster.id} className="component-item">
-				<Gladiator monster={monster} />
+				<Monster monster={monster} />
 			</li>
     )
   })

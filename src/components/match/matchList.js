@@ -4,7 +4,7 @@ import Match from './match.js'
 const MatchList = (props) => {
   const matches = props.matches.map((match) => {
     return(<li key={match.id} className="component-item">
-				<Gladiator match={match} />
+				<Match match={match} />
 			</li>
     )
   })

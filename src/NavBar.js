@@ -7,18 +7,33 @@ const NavBar = (props) => {
 
       <h1>Gladiators Arena</h1>
 
-      <ul>
+      <ul className="navbar">
         <li className="navLink">
-          <Link to="/gladiators">Gladiators</Link>
+          <Link to="/gladiators">Meet the Gladiators</Link>
         </li>
         <li className="navLink">
-          <Link to="/monsters">Monsters</Link>
+          <Link to="/gladiators/new">Train New Gladiators</Link>
         </li>
         <li className="navLink">
-          <Link to="/weapons">Weapons</Link>
+          <Link to="/monsters">Observe the Monsters</Link>
+        </li>
+        <li className="navLink">
+          <Link to="/monsters/new">Tame New Monsters</Link>
+        </li>
+      </ul>
+
+      <ul className="navbar">
+        <li className="navLink">
+          <Link to="/weapons">View the Weapons</Link>
+        </li>
+        <li className="navLink">
+          <Link to="/weapons/new">Forge New Weapon</Link>
         </li>
         <li className="navLink">
           <Link to="/matches">Arena Matches</Link>
+        </li>
+        <li className="navLink">
+          <Link to="/matches/new">Setup a Match</Link>
         </li>
       </ul>
     </header>

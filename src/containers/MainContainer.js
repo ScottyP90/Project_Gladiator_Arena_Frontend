@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from '../NavBar.js'
 import GladiatorList from '../components/gladiator/gladiatorList';
-// import MonsterList from '../components/monster/monsterList';
-// import WeaponList from '../components/weapon/weaponList';
-// import MatchList from '../component/match/matchList';
+import MonsterList from '../components/monster/monsterList';
+import WeaponList from '../components/weapon/weaponList';
+import MatchList from '../components/match/matchList';
 import Request from '../helpers/request';
 
 class MainContainer extends Component{
@@ -45,7 +45,13 @@ class MainContainer extends Component{
           <React.Fragment>
             <NavBar/>
             <Switch>
-              <Route exact path="/gladiator" render={(props) => <GladiatorList gladiator={this.state.gladiators}/>}/>
+              <Route exact path="/gladiator" render={(props) => <GladiatorList gladiators={this.state.gladiators}/>}/>
+
+              <Route exact path="/monsters" render={(props) => <MonsterList monsters={this.state.monsters}/>}/>
+
+              <Route exact path="/weapons" render={(props) => <WeaponList weapons={this.state.weapons}/>}/>
+
+              <Route exact path="/matches" render={(props) => <MatchList matches={this.state.matches}/>}/>
             </Switch>
           </React.Fragment>
         </Router>
