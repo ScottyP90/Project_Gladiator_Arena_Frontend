@@ -23,9 +23,9 @@ const GladiatorForm = (props) => {
     return <option key={index} value={weapon._links.self.href}>{weapon.weaponName}</option>
   })
 
-  render(
+  return(
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form-container" onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" name= "name" required/>
         <input type="text" placeholder="Title" name= "title" required/>
         <input type="text" placeholder="Gender" name= "gender" required/>
@@ -33,10 +33,10 @@ const GladiatorForm = (props) => {
           <option disabled value="default">Select a weapon</option>
           {options}
         </select>
-        <input type="number" placeholder="Health" name="health" required/>
-        <input type="number" placeholder="Strength" name="strength" required/>
-        <input type="number" placeholder="Defence" name="defence" required/>
-        <button type="submit">Train New Gladiator</button>
+        <input type="number" placeholder="Health" name="health" min="1" Max="5000" required/>
+        <input type="number" placeholder="Strength" name="strength" min="1" max="500" required/>
+        <input type="number" placeholder="Defence" name="defence" min="1" max="400" required/>
+        <button className="buttonForm" type="submit">Train New Gladiator</button>
       </form>
     </div>
   )

@@ -14,15 +14,17 @@ const WeaponForm = (props) => {
     props.handleWeaponPost(weapon)
   }
 
-  render(
+  return(
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form-container" onSubmit={handleSubmit}>
         <input type="text" placeholder="Weapon Name" name="weaponName" required/>
-        <input type="text" placeholder="Type" name="type" required/>
-        <input type="number" placeholder="Attack" name="attack" required/>
-        <input type="number" placeholder="Defence" name="defence" required/>
-        <button type="submit">Forge New Weapon</button>
+        <input type="text" placeholder="Weapon Type" name="type" required/>
+        <input type="number" placeholder="Attack" name="attack" min="0" max="300" required/>
+        <input type="number" placeholder="Defence" name="defence" min="0" max="300"  required/>
+        <button className="buttonForm" type="submit">Forge New Weapon</button>
       </form>
     </div>
   )
 }
+
+export default WeaponForm

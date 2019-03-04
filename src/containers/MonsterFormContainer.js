@@ -5,6 +5,7 @@ import MonsterForm from '../components/monster/MonsterForm'
 class MonsterFormContainer extends Component {
   constructor(props){
     super(props)
+    this.handleMonsterPost = this.handleMonsterPost.bind(this)
   }
 
   handleMonsterPost(monster){
@@ -16,7 +17,7 @@ class MonsterFormContainer extends Component {
 
   render(){
 
-    return <GladiatorForm handleGladiatorPost = {this.handleMonsterPost} />
+    return <MonsterForm handleMonsterPost = {this.handleMonsterPost} />
 
   }
 

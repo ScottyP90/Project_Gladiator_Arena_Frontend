@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 const MatchForm = (props) => {
 
@@ -9,6 +9,7 @@ const MatchForm = (props) => {
       "gladiator": event.target.gladiator.value,
       "monster": event.target.monster.value
     }
+    props.handleMatchPost(match)
   }
 
   const options1 = props.gladiators.map((gladiator,index) => {
@@ -19,9 +20,9 @@ const MatchForm = (props) => {
     return <option key={index} value={monster._links.self.href}>{monster.monsterName}</option>
   })
 
-  render(
+  return(
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="form-container" onSubmit={handleSubmit}>
         <select name="gladiator" required>
           <option disabled value="default">Select a Gladiator</option>
           {options1}
@@ -31,8 +32,10 @@ const MatchForm = (props) => {
           <option disabled value="default">Select a Monster</option>
           {options2}
         </select>
-        <button type="submit">New Match</button>
+        <button className="buttonForm" type="submit">New Match</button>
       </form>
     </div>
   )
 }
+
+export default MatchForm

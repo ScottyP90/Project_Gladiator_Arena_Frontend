@@ -5,6 +5,7 @@ import GladiatorForm from '../components/gladiator/GladiatorForm'
 class GladiatorFormContainer extends Component {
   constructor(props){
     super(props)
+    this.handleGladiatorPost = this.handleGladiatorPost.bind(this)
   }
 
   handleGladiatorPost(gladiator){

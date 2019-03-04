@@ -2,13 +2,11 @@ import React from 'react';
 
 const Monster = (props) => {
 
+  const url = "/monsters/" + props.monster.id;
   return(
-    <dev>
-      <h4 className="name">Monsters Name: {props.monster.monsterName} {props.monster.title}</h4>
-      <p className="health">Health: {props.monster.health}</p>
-      <p className="attack">Attack: {props.monster.attack}</p>
-      <p className="defence">Defence {props.monster.defence}</p>
-    </dev>
+    <div>
+      <a href={url} className="name">{props.monster.monsterName} {props.monster.title}</a>
+    </div>
   )
 }
 

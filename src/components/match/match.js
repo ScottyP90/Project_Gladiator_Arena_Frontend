@@ -2,12 +2,14 @@ import React from 'react';
 
 const Match = (props) => {
 
+  const url = "/matches/fight/" + props.match.id;
+  const url1 = "/matches/" + props.match.id;
   return(
     <div>
-      <h4 className="name">Match: {props.match.name}</h4>
-      <p className="gladiator">Gladiator: {props.match.gladiator.name} {props.match.gladiator.title}</p>
-      <p>vs</p>
-      <p className="monster">Monster: {props.match.monster.monsterName} {props.match.monster.title}</p>
+      <a href={url1} className="name">Match: {props.match.name} </a>
+      <div>
+        <a href={url} className="button">Fight</a>
+      </div>
     </div>
   )
 }
