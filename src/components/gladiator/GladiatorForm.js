@@ -5,17 +5,17 @@ const GladiatorForm = (props) => {
   function handleSubmit(event){
     event.preventDefault();
     const gladiator = {
-        "name": event.target.name.value,
-        "title": event.target.title.value,
-        "gender": event.target.gender.value,
-        "weapon": event.target.weapon.value,
-        "health": event.target.health.value,
-        "healthCap": event.target.health.value,
-        "strength": event.target.strength.value,
-        "defence": event.target.defence.value,
-        "healingCap": 3,
-        "matches": []
-      }
+      "name": event.target.name.value,
+      "title": event.target.title.value,
+      "gender": event.target.gender.value,
+      "weapon": event.target.weapon.value,
+      "health": event.target.health.value,
+      "healthCap": event.target.health.value,
+      "strength": event.target.strength.value,
+      "defence": event.target.defence.value,
+      "healingCap": 3,
+      "matches": []
+    }
     props.handleGladiatorPost(gladiator)
   }
 
@@ -24,7 +24,7 @@ const GladiatorForm = (props) => {
   })
 
   return(
-    <div>
+    <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" name= "name" required/>
         <input type="text" placeholder="Title" name= "title" required/>
@@ -33,7 +33,7 @@ const GladiatorForm = (props) => {
           <option disabled value="default">Select a weapon</option>
           {options}
         </select>
-        <input type="number" placeholder="Health" name="health" min="1" Max="5000" required/>
+        <input type="number" placeholder="Health" name="health" min="1" max="5000" required/>
         <input type="number" placeholder="Strength" name="strength" min="1" max="500" required/>
         <input type="number" placeholder="Defence" name="defence" min="1" max="400" required/>
         <button className="buttonForm" type="submit">Train New Gladiator</button>

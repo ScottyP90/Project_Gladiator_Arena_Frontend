@@ -17,7 +17,7 @@ const MonsterForm = (props) => {
   }
 
   return(
-    <div>
+    <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
         <input type="text" placeholder="Monster Name" name="monsterName" required/>
         <input type="text" placeholder="Title" name="title" required/>

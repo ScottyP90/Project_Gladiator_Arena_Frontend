@@ -4,6 +4,7 @@ body{
   text-align: center;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(to right, black, red, red, red, black);
 }
 
 header{
@@ -32,16 +33,34 @@ li{
 }
 
 input{
-  margin: 5px;
-  padding: 8px;
   width: 200px;
+  padding: 5px;
+  margin: 5px 0;
+  font-size: 16;
+  background-color: red;
+  border: 2px solid black;
+  border-radius: 0.50em;
+  font-family: sans-serif;
+  font-size: 13px;
   align-self: center;
+  text-align: center;
 }
 
 select{
-  margin: 5px;
-  padding: 8px;
-  width: 200px;
+  width: 210px;
+  padding: 5px;
+  margin: 10px 0;
+  font-size: 16;
+  -webkit-appearance: none;
+  background-color: red;
+  border-radius: 0.50em;
+  border: 2px solid black;
+  font-family: sans-serif;
+  font-size: 13px;
+  align-self: center;
+}
+
+option{
   align-self: center;
 }
 
@@ -81,14 +100,27 @@ select{
   align-self: center;
   flex-direction: column;
   justify-content: center;
-  width:auto;
+  width:300px;
   padding: 10px;
-  margin: 5px;
+  margin: 15px;
+  background-color: lightblue;
+  border-radius: .80em;
 }
 
-.center{
-
+.detailsContainer{
+  background-color: lightblue;
+  padding: 10px;
+  margin: 10px;
+  border-radius: .80em;
 }
+
+.container{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 15px;
+}
+
 
 .navbar{
   display: flex;

@@ -21,13 +21,13 @@ const MatchForm = (props) => {
   })
 
   return(
-    <div>
+    <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
         <select name="gladiator" required>
           <option disabled value="default">Select a Gladiator</option>
           {options1}
         </select>
-        <input type="text" placeholder="" name="name" required/>
+        <input type="text" placeholder="Match Name" name="name" required/>
         <select name="monster" required>
           <option disabled value="default">Select a Monster</option>
           {options2}

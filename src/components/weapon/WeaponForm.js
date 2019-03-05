@@ -15,7 +15,7 @@ const WeaponForm = (props) => {
   }
 
   return(
-    <div>
+    <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
         <input type="text" placeholder="Weapon Name" name="weaponName" required/>
         <input type="text" placeholder="Weapon Type" name="type" required/>

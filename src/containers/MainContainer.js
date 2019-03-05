@@ -11,8 +11,11 @@ import MatchList from '../components/match/matchList';
 import MatchDetails from '../components/match/matchDetails'
 import MatchFight from '../components/match/MatchFight';
 import GladiatorFormContainer from './GladiatorFormContainer'
+import GladiatorEditFormContainer from './GladiatorEditFormContainer'
 import MonsterFormContainer from './MonsterFormContainer'
+import MonsterEditFormContainer from './MonsterEditFormContainer'
 import WeaponFormContainer from './WeaponFormContainer'
+import WeaponEditFormContainer from './WeaponEditFormContainer'
 import MatchFormContainer from './MatchFormContainer'
 import Request from '../helpers/request';
 
@@ -35,6 +38,9 @@ class MainContainer extends Component{
     this.handleWeaponDelete = this.handleWeaponDelete.bind(this)
     this.findSingleMatchById = this.findSingleMatchById.bind(this)
     this.handleMatchDelete = this.handleMatchDelete.bind(this)
+    this.handleAttack = this.handleAttack.bind(this)
+    this.handleHeal = this.handleHeal.bind(this)
+    this.handleMatchEnd = this.handleMatchEnd.bind(this)
   }
 
   componentDidMount(){
@@ -123,6 +129,24 @@ class MainContainer extends Component{
     })
   }
 
+  handleAttack(gladiatorId,monsterId,matchId){
+    const request = new Request();
+    const url = '/api/matches/fight/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
+    request.put(url)
+  }
+
+  handleHeal(gladiatorId,monsterId,matchId){
+    const request = new Request();
+    const url = '/api/matches/heal/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
+    request.put(url)
+  }
+  handleMatchEnd(gladiatorId,monsterId,matchId){
+    const request = new Request();
+    const url = '/api/matches/reset/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
+    request.put(url).then(() => {
+      window.location = '/matches'
+    })
+  }
 
 
   render(){
@@ -159,7 +183,12 @@ class MainContainer extends Component{
 
               <Route exact path="/matches/fight/:id" render={(props) =>{
                 const match = this.findMatchById(props.match.params.id);
-                return <MatchFight match={match}/>
+                return <MatchFight match={match} onAttack={this.handleAttack} onHeal={this.handleHeal} onFinishMatch={this.handleMatchEnd}/>
+              }}/>
+
+              <Route exact path="/gladiators/edit/:id" render={(props) =>{
+                const gladiator = this.findGladiatorById(props.match.params.id);
+                return <GladiatorEditFormContainer gladiator={gladiator} weapons={this.state.weapons}/>
               }}/>
 
               <Route exact path="/gladiators/:id" render={(props) =>{
@@ -167,9 +196,19 @@ class MainContainer extends Component{
                 return <GladiatorDetails gladiator={gladiator} onDelete={this.handleGladiatorDelete}/>
               }}/>
 
+              <Route exact path="/monsters/edit/:id" render={(props) =>{
+                const monster = this.findMonsterById(props.match.params.id);
+                return <MonsterEditFormContainer monster={monster}/>
+              }}/>
+
               <Route exact path="/monsters/:id" render={(props) =>{
                 const monster = this.findMonsterById(props.match.params.id);
                 return <MonsterDetails monster={monster} onDelete={this.handleMonsterDelete}/>
+              }}/>
+
+              <Route exact path="/weapons/edit/:id" render={(props) =>{
+                const weapon = this.findWeaponById(props.match.params.id);
+                return <WeaponEditFormContainer weapon={weapon}/>
               }}/>
 
               <Route exact path="/weapons/:id" render={(props) =>{
