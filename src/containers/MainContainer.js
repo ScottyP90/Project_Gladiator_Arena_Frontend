@@ -131,7 +131,7 @@ class MainContainer extends Component{
 
   handleAttack(gladiatorId,monsterId,matchId){
     const request = new Request();
-    const url = '/api/matches/fight/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
+    const url = '/api/matches/fight/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId;
     request.put(url)
   }
 

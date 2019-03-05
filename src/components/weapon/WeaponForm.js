@@ -17,6 +17,7 @@ const WeaponForm = (props) => {
   return(
     <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Forging New Weapon</h3>
         <input type="text" placeholder="Weapon Name" name="weaponName" required/>
         <input type="text" placeholder="Weapon Type" name="type" required/>
         <input type="number" placeholder="Attack" name="attack" min="0" max="300" required/>

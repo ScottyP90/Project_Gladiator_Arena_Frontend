@@ -27,8 +27,8 @@ const GladiatorEditForm = (props) => {
 
   return(
     <div className="container">
-      <h4>Training {props.gladiator.name} {}</h4>
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Training {props.gladiator.name}</h3>
         <select name="weapon" required>
           <option disabled value="default">Select a weapon</option>
           {options}
@@ -36,7 +36,7 @@ const GladiatorEditForm = (props) => {
         <input type="number" placeholder="Health" name="health" min="1" max="5000" defaultValue={props.gladiator.health} required/>
         <input type="number" placeholder="Strength" name="strength" min="1" max="500" defaultValue={props.gladiator.strength} required/>
         <input type="number" placeholder="Defence" name="defence" min="1" max="400" defaultValue={props.gladiator.defence} required/>
-        <button className="buttonForm" type="submit">Finish Train {props.gladiator.name} </button>
+        <button className="buttonForm" type="submit">Finish Training {props.gladiator.name} </button>
       </form>
     </div>
   )

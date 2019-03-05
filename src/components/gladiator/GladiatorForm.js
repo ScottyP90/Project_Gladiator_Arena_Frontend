@@ -26,6 +26,7 @@ const GladiatorForm = (props) => {
   return(
     <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Training New Gladiator</h3>
         <input type="text" placeholder="Name" name= "name" required/>
         <input type="text" placeholder="Title" name= "title" required/>
         <input type="text" placeholder="Gender" name= "gender" required/>

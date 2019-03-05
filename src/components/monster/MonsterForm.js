@@ -19,6 +19,7 @@ const MonsterForm = (props) => {
   return(
     <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Taming New Monster</h3>
         <input type="text" placeholder="Monster Name" name="monsterName" required/>
         <input type="text" placeholder="Title" name="title" required/>
         <input type="number" placeholder="Health" name="health" min="1" max="6000" required/>

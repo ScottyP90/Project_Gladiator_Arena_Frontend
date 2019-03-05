@@ -19,6 +19,7 @@ const WeaponEditForm = (props) => {
   return(
     <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Reforging {props.weapon.weaponName}</h3>
         <input type="number" placeholder="Attack" name="attack" min="0" max="300" defaultValue={props.weapon.attack} required/>
         <input type="number" placeholder="Defence" name="defence" min="0" max="300" defaultValue={props.weapon.defence} required/>
         <button className="buttonForm" type="submit">Forge Weapon</button>

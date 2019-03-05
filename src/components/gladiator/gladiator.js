@@ -4,9 +4,11 @@ const Gladiator = (props) => {
 
   const url = "/gladiators/" + props.gladiator.id;
   return (
-    <div>
-      <a href={url}>{props.gladiator.name} {props.gladiator.title} </a>
-      <p className="weapon">Weapon: {props.gladiator.weapon.weaponName}</p>
+    <div className="container">
+      <div className="detailsContainer">
+        <a href={url}>{props.gladiator.name} {props.gladiator.title} </a>
+        <p className="weapon">Weapon: {props.gladiator.weapon.weaponName}</p>
+      </div>
     </div>
   )
 }

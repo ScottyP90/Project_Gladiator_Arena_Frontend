@@ -23,6 +23,7 @@ const MatchForm = (props) => {
   return(
     <div className="container">
       <form className="form-container" onSubmit={handleSubmit}>
+        <h3>Arrange New Match</h3>
         <select name="gladiator" required>
           <option disabled value="default">Select a Gladiator</option>
           {options1}
