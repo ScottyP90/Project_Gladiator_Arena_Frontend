@@ -9,7 +9,7 @@ import WeaponList from '../components/weapon/weaponList';
 import WeaponDetails from '../components/weapon/weaponDetails'
 import MatchList from '../components/match/matchList';
 import MatchDetails from '../components/match/matchDetails'
-import MatchFight from '../components/match/MatchFight';
+import MatchFightContainer from './MatchFightContainer';
 import GladiatorFormContainer from './GladiatorFormContainer'
 import GladiatorEditFormContainer from './GladiatorEditFormContainer'
 import MonsterFormContainer from './MonsterFormContainer'
@@ -129,7 +129,6 @@ class MainContainer extends Component{
   }
 
   handleGladiatorUpdate(gladiator){
-    console.log("GLADIATOR", gladiator);
     const request = new Request();
     request.put('/api/gladiators/' + gladiator.id, gladiator)
 
@@ -176,7 +175,7 @@ class MainContainer extends Component{
 
               <Route exact path="/matches/fight/:id" render={(props) =>{
                 const match = this.findMatchById(props.match.params.id);
-                return <MatchFight match={match} weapons={this.state.weapons} handleMonsterUpdate={this.handleMonsterUpdate} handleGladiatorUpdate={this.handleGladiatorUpdate}/>
+                return <MatchFightContainer match={match} weapons={this.state.weapons} handleMonsterUpdate={this.handleMonsterUpdate} handleGladiatorUpdate={this.handleGladiatorUpdate}/>
               }}/>
 
               <Route exact path="/gladiators/edit/:id" render={(props) =>{
