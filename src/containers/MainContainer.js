@@ -38,9 +38,8 @@ class MainContainer extends Component{
     this.handleWeaponDelete = this.handleWeaponDelete.bind(this)
     this.findSingleMatchById = this.findSingleMatchById.bind(this)
     this.handleMatchDelete = this.handleMatchDelete.bind(this)
-    this.handleAttack = this.handleAttack.bind(this)
-    this.handleHeal = this.handleHeal.bind(this)
-    this.handleMatchEnd = this.handleMatchEnd.bind(this)
+    this.handleMonsterUpdate = this.handleMonsterUpdate.bind(this)
+    this.handleGladiatorUpdate = this.handleGladiatorUpdate.bind(this)
   }
 
   componentDidMount(){
@@ -129,24 +128,18 @@ class MainContainer extends Component{
     })
   }
 
-  handleAttack(gladiatorId,monsterId,matchId){
+  handleGladiatorUpdate(gladiator){
+    console.log("GLADIATOR", gladiator);
     const request = new Request();
-    const url = '/api/matches/fight/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId;
-    request.put(url)
+    request.put('/api/gladiators/' + gladiator.id, gladiator)
+
   }
 
-  handleHeal(gladiatorId,monsterId,matchId){
+  handleMonsterUpdate(monster){
     const request = new Request();
-    const url = '/api/matches/heal/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
-    request.put(url)
+    request.put('/api/monsters/' + monster.id, monster)
   }
-  handleMatchEnd(gladiatorId,monsterId,matchId){
-    const request = new Request();
-    const url = '/api/matches/reset/' + gladiatorId + '/vs/' + monsterId + '/match/' + matchId
-    request.put(url).then(() => {
-      window.location = '/matches'
-    })
-  }
+
 
 
   render(){
@@ -183,7 +176,7 @@ class MainContainer extends Component{
 
               <Route exact path="/matches/fight/:id" render={(props) =>{
                 const match = this.findMatchById(props.match.params.id);
-                return <MatchFight match={match} onAttack={this.handleAttack} onHeal={this.handleHeal} onFinishMatch={this.handleMatchEnd}/>
+                return <MatchFight match={match} weapons={this.state.weapons} handleMonsterUpdate={this.handleMonsterUpdate} handleGladiatorUpdate={this.handleGladiatorUpdate}/>
               }}/>
 
               <Route exact path="/gladiators/edit/:id" render={(props) =>{

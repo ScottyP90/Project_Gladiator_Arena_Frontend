@@ -3,17 +3,122 @@ import React from 'react';
 const MatchFight = (props) => {
   if (!props.match) return null;
 
-  function handleAttack() {
-    console.log('handleAttack props', props);
-    props.onAttack(props.match.gladiator.id, props.match.monster.id, props.match.id)
+  const findWeapon = () => {
+    const foundWeapon = props.weapons.find((weapon) => {
+      return  weapon.gladiator === props.match.gladiator;
+    })
+
+    return foundWeapon;
   }
 
+  function monsterAttack(){
+    const monsterDice = Math.floor(Math.random() * 20) + 1
+
+    let monsterDamage = null
+
+    if(monsterDice >= 18){
+      monsterDamage = Math.round((props.match.monster.attack - props.match.gladiator.defence) * 1.2)
+      if (monsterDamage < 0) {
+        monsterDamage = 0
+      }
+      props.match.gladiator.health = props.match.gladiator.health - monsterDamage
+    }else if (monsterDice >= 4) {
+      monsterDamage = (props.match.monster.attack - props.match.gladiator.defence)
+      if (monsterDamage < 0) {
+        monsterDamage = 0
+      }
+      props.match.gladiator.health = props.match.gladiator.health - monsterDamage
+      if(props.match.gladiator.health < 0){
+        props.match.gladiator.health = 0
+      }
+    }
+  }
+
+  function gladiatorAttack() {
+    const gladiatorDice = Math.floor(Math.random() * 20) + 1
+
+    let gladiatorDamage = null
+    if(gladiatorDice >= 18){
+      gladiatorDamage = Math.round(((props.match.gladiator.strength) - props.match.monster.defence) * 1.2)
+      if (gladiatorDamage < 0) {
+        gladiatorDamage = 0
+      }
+      props.match.monster.health = props.match.monster.health - gladiatorDamage
+    }else if (gladiatorDice >= 4) {
+      gladiatorDamage = ((props.match.gladiator.strength) - props.match.monster.defence)
+      if (gladiatorDamage < 0) {
+        gladiatorDamage = 0
+      }
+      props.match.monster.health = props.match.monster.health - gladiatorDamage
+      if (props.match.monster.health < 0){
+        props.match.monster.health = 0
+      }
+    }
+  }
+
+  function gladiatorHeal(){
+
+    if(props.match.gladiator.healingCap > 0){
+      props.match.gladiator.healingCap = props.match.gladiator.healingCap - 1
+
+      let totalHeal = Math.round(props.match.gladiator.healthCap / 1.2)
+      if ((totalHeal + props.match.gladiator.health) > props.match.gladiator.healthCap) {
+        totalHeal = props.match.gladiator.healthCap - props.match.gladiator.health
+      }
+
+      props.match.gladiator.health = props.match.gladiator.health + totalHeal
+    }
+
+  }
+
+  function endMatch() {
+
+    props.match.gladiator.health = props.match.gladiator.healthCap
+
+    props.match.monster.health = props.match.monster.healthCap
+
+    props.match.gladiator.healingCap = 3
+  }
+
+
+
+  function handleAttack() {
+
+
+    monsterAttack()
+
+    props.handleGladiatorUpdate(props.match.gladiator)
+
+
+    gladiatorAttack()
+
+    props.handleMonsterUpdate(props.match.monster)
+
+    window.location = '/matches/fight/' + props.match.id
+  }
+
+
+
   function handleHeal() {
-    props.onHeal(props.match.gladiator.id, props.match.monster.id, props.match.id)
+
+    gladiatorHeal()
+
+    props.handleGladiatorUpdate(props.match.gladiator)
+
+    window.location = '/matches/fight/' + props.match.id
+
   }
 
   function handleFinishMatch() {
-    props.onFinishMatch(props.match.gladiator.id, props.match.monster.id, props.match.id)
+
+    endMatch()
+
+    props.handleGladiatorUpdate(props.match.gladiator)
+
+    props.handleMonsterUpdate(props.match.monster)
+
+    window.location = '/matches/'
+
   }
 
   return(

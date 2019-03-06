@@ -14,7 +14,7 @@ const MonsterEditForm = (props) => {
       "attack": event.target.attack.value,
       "defence": event.target.defence.value,
     }
-
+    console.log(monster)
     props.handleMonsterUpdate(monster)
   }
   return(

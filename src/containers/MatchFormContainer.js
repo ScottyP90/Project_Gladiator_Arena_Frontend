@@ -8,15 +8,15 @@ class MatchFormContainer extends Component {
     this.handleMatchPost = this.handleMatchPost.bind(this)
   }
 
-  handleMatchPost(weapon){
+  handleMatchPost(match){
     const request = new Request()
-    request.post('/api/matches', weapon).then(() => {
+    request.post('/api/matches', match).then(() => {
       window.location = '/matches'
     })
   }
 
   render(){
-    
+
     return <MatchForm gladiators={this.props.gladiators} monsters={this.props.monsters} handleMatchPost={this.handleMatchPost} />
 
   }
